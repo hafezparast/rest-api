@@ -1,19 +1,21 @@
 from flask import Flask
 from flask_restful import Api, Resource
+from flask_cors import CORS
 
-#here you can import diffrent packages can be year or grade
+# here you can import diffrent packages can be year or grade
 from questions import algebra
 
 app = Flask(__name__)
+CORS(app)
 api = Api(app)
 
-
 names = {
-         "question": algebra.A_math_question,
-         "q2":algebra.find_x_angel_in_qualdrilateral,
-         "q3":algebra.simple_equation,
-         "q4":algebra.sym_equation
-         }
+    "question": algebra.A_math_question,
+    "q2": algebra.find_x_angel_in_qualdrilateral,
+    "q3": algebra.simple_equation,
+    "q4": algebra.sym_equation
+}
+
 
 class HelloWorld(Resource):
     def get(self, name):
@@ -21,6 +23,7 @@ class HelloWorld(Resource):
 
     def post(self):
         return {"data": "Posted"}
+
 
 api.add_resource(HelloWorld, "/helloworld/<string:name>")
 

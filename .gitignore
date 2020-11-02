@@ -1,2 +1,7 @@
 .venv
 .vscode
+
+.DS_Store
+.idea/
+questions/__pycache__/
+venv/
