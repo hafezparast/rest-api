@@ -29,7 +29,7 @@ api.add_resource(HelloWorld, "/helloworld/<string:name>")
 
 @app.route('/')
 def index():
-    return render_template('test.html')
+    return render_template('test.html',q="q3")
 
 @app.route('/aboutus')
 def aboutus():
