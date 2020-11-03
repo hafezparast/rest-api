@@ -5,6 +5,7 @@
 </head>
 <body>
 <img id="img"/>
+<img id="img2"/>
 
 <script>
     async function init() {
@@ -17,6 +18,17 @@
         )
     }
     init();
+    
+ async function init2() {
+        const url = "https://restfulmath.herokuapp.com/helloworld/{{q}}";
+        let res = await fetch(url);
+        res = await res.json()
+        console.log(res)
+        document.getElementById('img2').setAttribute('src',
+            `data:image/png;base64, ${res.photo}`
+        )
+    }
+    init();    
 </script>
 </body>
 </html>
