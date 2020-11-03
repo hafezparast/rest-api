@@ -31,5 +31,9 @@ api.add_resource(HelloWorld, "/helloworld/<string:name>")
 def index():
     return render_template('test.html')
 
+@app.route('/aboutus')
+def aboutus():
+    return "we are happy"
+
 if __name__ == "__main__":
     app.run(debug=True, host='0.0.0.0')
