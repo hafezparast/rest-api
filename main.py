@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask,render_template
 from flask_restful import Api, Resource
 from flask_cors import CORS
 
@@ -26,6 +26,10 @@ class HelloWorld(Resource):
 
 
 api.add_resource(HelloWorld, "/helloworld/<string:name>")
+
+@app.route('/')
+def index():
+    return render_template('test.html')
 
 if __name__ == "__main__":
     app.run(debug=True, host='0.0.0.0')
