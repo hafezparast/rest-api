@@ -1,4 +1,4 @@
-from flask import Flask,render_template
+from flask import Flask,render_template,jsonify, request
 from flask_restful import Api, Resource
 from flask_cors import CORS
 
@@ -56,6 +56,18 @@ def index():
 @app.route('/aboutus')
 def aboutus():
     return "we are happy"
+
+@app.route('/libraries')
+def libraries():
+    lib=request.args.get('lib')
+    if lib:
+        try:
+            a= __import__("questions.{}".format(l)).__dict__[lib]
+            funcs= [i for i in a.__dict__.keys() if i[0]!="_"]
+            return jsonify({'questions':funcs})
+        except:
+            return jsonify({'error':'library not found'})
+    return jsonify({'libs':libs})
 
 if __name__ == "__main__":
     app.run(debug=True, host='0.0.0.0')
