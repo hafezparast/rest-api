@@ -6,6 +6,49 @@ from io import BytesIO
 import base64
 import requests, json
 
+def Q1():
+  q = """ 1   A mathematics lessons starts at {time}.
+      The lesson lasts for {duration} minutes.
+      Work out the time that the lesson ends.
+      
+      
+      
+      
+      
+                                  ....................... [1] 
+      CA : {jwpn}"""
+
+  duration = random.randint(10,120)
+  a = random.randint(8,15)
+  b = random.randint(00,59)
+  time = str(a)+str(b)
+  if a < 10 or b < 10:
+    print (str(a).zfill(2))
+    print (str(b).zfill(2))
+    time = str(a).zfill(2) + str(b).zfill(2)
+  jwpn = int(time)+duration
+  if jwpn % 1000 == jwpn:
+    jwpn = str(0) + str(jwpn)
+  print(jwpn)
+  ans = {"q": q, "time": time, "duration":duration, 'jwpn':jwpn}
+
+  fig = plt.figure()
+  ax = fig.add_axes([0, 0, 1, 1])
+  plt.axis('off')
+  fig.show()
+
+  ax.text(0.1, 0.5, ans['q'].format(**ans),
+          horizontalalignment='left',
+          verticalalignment='center',
+          fontsize=15, color='black',
+          transform=ax.transAxes)
+  # this is to convert the graph to the text format to send
+  image = BytesIO()
+  plt.savefig(image, format='png')
+  image.seek(0)
+  I = base64.encodebytes(image.getvalue())
+  return {"photo": I.decode()}
+
 
 def simple_equation():
   return {"questio":"a simple equation", "answer":"answer"}
