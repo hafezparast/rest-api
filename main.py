@@ -12,13 +12,13 @@ mypath=os.listdir('./questions')
 
 libs=list(set([i.split('.')[0] for i in mypath if i[0]!="_"]))
 questions=dict()
-qlist=[]
+qlist=dict()
 
 for l in libs:
     a= __import__("questions.{}".format(l)).__dict__[l]
     funcs= [i for i in a.__dict__.keys() if i[0]!="_"]
     for func in funcs:
-        qlist.append((l,func,a.__dict__[func]))
+        qlist[(l,func)]=a.__dict__[func]
         
 print(qlist)
 print("-"*10)
@@ -59,8 +59,14 @@ def aboutus():
 
 @app.route('/libraries')
 def libraries():
-    lib=request.args.get('lib')
+    lib=request.args.get('lib',Flase)
+    qu=request.args.get('qu',False)
     if lib:
+        if qu:
+            try:
+                return jsonify(qlist[(lib,qu)]())
+            except:
+                return jsonify({'error':'question not found'})
         try:
             a= __import__("questions.{}".format(l)).__dict__[lib]
             funcs= [i for i in a.__dict__.keys() if i[0]!="_"]
