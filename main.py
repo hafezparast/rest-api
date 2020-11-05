@@ -75,5 +75,25 @@ def libraries():
             return jsonify({'error':'library not found'})
     return jsonify({'libs':libs})
 
+
+@app.route('/gholam')
+def gholam():
+    lib=request.args.get('lib',False)
+    qu=request.args.get('qu',False)
+    if lib:
+        if qu:
+            try:
+                return render_template('test.html',lib=lib,qu=qu)
+            except:
+                return jsonify({'error':'question not found'})
+        try:
+            a= __import__("questions.{}".format(l)).__dict__[lib]
+            funcs= [i for i in a.__dict__.keys() if i[0]!="_"]
+            return jsonify({'questions':funcs})
+        except:
+            return jsonify({'error':'library not found'})
+    return jsonify({'libs':libs})
+
+
 if __name__ == "__main__":
     app.run(debug=True, host='0.0.0.0')
