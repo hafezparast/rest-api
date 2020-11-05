@@ -59,7 +59,7 @@ def aboutus():
 
 @app.route('/libraries')
 def libraries():
-    lib=request.args.get('lib',Flase)
+    lib=request.args.get('lib',False)
     qu=request.args.get('qu',False)
     if lib:
         if qu:
