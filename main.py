@@ -3,9 +3,26 @@ from flask_restful import Api, Resource
 from flask_cors import CORS
 
 import os
+# mypath=os.listdir('./questions')
+# print('-'*10)
+# print(mypath)
+
+
 mypath=os.listdir('./questions')
-print('-'*10)
-print(mypath)
+
+libs=list(set([i.split('.')[0] for i in mypath if i[0]!="_"]))
+questions=dict()
+qlist=[]
+
+for l in libs:
+    a= __import__("lib.{}".format(l)).__dict__[l]
+    funcs= [i for i in a.__dict__.keys() if i[0]!="_"]
+    for func in funcs:
+        qlist.append((l,func,a.__dict__[func]))
+        
+print(qlist)
+print("-"*10)
+print(qlist[0][2]())
 
 # here you can import diffrent packages can be year or grade
 from questions import algebra
