@@ -2,6 +2,11 @@ from flask import Flask,render_template
 from flask_restful import Api, Resource
 from flask_cors import CORS
 
+
+mypath=os.listdir('./')
+print('-'*10)
+print(mypath)
+
 # here you can import diffrent packages can be year or grade
 from questions import algebra
 
