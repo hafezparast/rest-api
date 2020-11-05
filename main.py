@@ -22,7 +22,7 @@ for l in libs:
         
 print(qlist)
 print("-"*10)
-print(qlist[0][2]())
+# print(qlist[0][2]())
 
 # here you can import diffrent packages can be year or grade
 from questions import algebra
