@@ -15,7 +15,7 @@ questions=dict()
 qlist=[]
 
 for l in libs:
-    a= __import__("lib.{}".format(l)).__dict__[l]
+    a= __import__("questions.{}".format(l)).__dict__[l]
     funcs= [i for i in a.__dict__.keys() if i[0]!="_"]
     for func in funcs:
         qlist.append((l,func,a.__dict__[func]))
