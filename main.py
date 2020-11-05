@@ -2,7 +2,7 @@ from flask import Flask,render_template
 from flask_restful import Api, Resource
 from flask_cors import CORS
 
-
+import os
 mypath=os.listdir('./')
 print('-'*10)
 print(mypath)
