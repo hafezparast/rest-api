@@ -16,6 +16,9 @@ class Q_type:
   photo="photo"
   shortreply="shortreply"
 
+def send(info):
+  pass
+
 # def send(info):
 #   url="https://thebotserver.herokuapp.com/api/broadcast/64"
 #   #url="https://vocab.ngrok.io/api/broadcast/64"
