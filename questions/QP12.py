@@ -1325,440 +1325,438 @@ def Q16():
 # send(Q16())
 # Q16()
 
-#@title Q17(2019FebMarch)
-import inflect
-def Q17():
-  c="""
+# #@title Q17(2019FebMarch)
+# import inflect
+# def Q17():
+#   c="""
   
-  17. Draw the enlargement of the 
-        triangle by scale factor {word}, centre X.
+#   17. Draw the enlargement of the 
+#         triangle by scale factor {word}, centre X.
     
                                                                   
                                                                                            
-    """
-  num = random.randint(2,5)
-  tryje = inflect.engine()
-  word = tryje.number_to_words(num)
-  ans={"q":c, 'word':word}
+#     """
+#   num = random.randint(2,5)
+#   tryje = inflect.engine()
+#   word = tryje.number_to_words(num)
+#   ans={"q":c, 'word':word}
 
-  fig = plt.figure()
-  ax = fig.add_axes([0,0,1,1])
-  plt.axis('on')
+#   fig = plt.figure()
+#   ax = fig.add_axes([0,0,1,1])
+#   plt.axis('on')
 
-  ax.text(0.05, 0.15, ans['q'].format(**ans),
-        horizontalalignment='left',
-        verticalalignment='center',
-        fontsize=10, color='black',
-        transform=ax.transAxes)
+#   ax.text(0.05, 0.15, ans['q'].format(**ans),
+#         horizontalalignment='left',
+#         verticalalignment='center',
+#         fontsize=10, color='black',
+#         transform=ax.transAxes)
   
-  #start
-  fig2 = fig.add_subplot(1, 1, 1)
+#   #start
+#   fig2 = fig.add_subplot(1, 1, 1)
 
-  #buat grid
-  for x in range(15):
-    plt.hlines(x,0,15, lw=2, color='0.8', zorder=2,linestyles="solid")
-    plt.vlines(x,0,15, lw=2, color='0.8', zorder=2,linestyles="solid")
-  plt.vlines(0,0,15, lw=2, color='k', zorder=5,linestyles="solid")
-  plt.subplots_adjust(bottom=0.4,top=0.97,left=0.1,right=0.6)
-  #triangle tgh
-  plt.plot([3,7,3,3], [3,3,5,3],color="black")
-  #dot
-  plt.plot([4], [4], 'go') 
+#   #buat grid
+#   for x in range(15):
+#     plt.hlines(x,0,15, lw=2, color='0.8', zorder=2,linestyles="solid")
+#     plt.vlines(x,0,15, lw=2, color='0.8', zorder=2,linestyles="solid")
+#   plt.vlines(0,0,15, lw=2, color='k', zorder=5,linestyles="solid")
+#   plt.subplots_adjust(bottom=0.4,top=0.97,left=0.1,right=0.6)
+#   #triangle tgh
+#   plt.plot([3,7,3,3], [3,3,5,3],color="black")
+#   #dot
+#   plt.plot([4], [4], 'go') 
   
-  ####################### scale x,y ###################
-  plt.ylim(0, 15)
-  plt.xlim(0, 15)
-  ax.text(0, 1, ans['q'].format(**ans), horizontalalignment='left',verticalalignment='center', transform=ax.transAxes)
-  image = BytesIO()
-  plt.savefig(image, format='png')
-  image.seek(0)
-  I=base64.encodebytes(image.getvalue())
-  return {"photo": I.decode(), "Type":Q_type.photo}
-Q17()
+#   ####################### scale x,y ###################
+#   plt.ylim(0, 15)
+#   plt.xlim(0, 15)
+#   ax.text(0, 1, ans['q'].format(**ans), horizontalalignment='left',verticalalignment='center', transform=ax.transAxes)
+#   image = BytesIO()
+#   plt.savefig(image, format='png')
+#   image.seek(0)
+#   I=base64.encodebytes(image.getvalue())
+#   return {"photo": I.decode(), "Type":Q_type.photo}
+# Q17()
 
-#@title Q18(2019FebMarch)
-import math
-def Q18():
-  q = """
+# #@title Q18(2019FebMarch)
+# import math
+# def Q18():
+#   q = """
   
-18   The probability that a sweet made in a factory
-       is the {opt} shape is {prob}.
-       One day, the factory makes {rand} sweets.
-       Calculate the number of sweets that 
-       are expected to be {opt} shape.
-        A. {o1}
-        B. {o2}
-        C. {o3}
-        D. {o4} 
-        E. {o5}
-    CA : {ca}
-                                                                                .......................... [2] """
-  option = ['correct','wrong']
-  opt = random.choice(option)
-  probrand = random.randint(0000,10000)
-  prob = probrand/10000
-  rand = random.randint(10000,70000)
+# 18   The probability that a sweet made in a factory
+#        is the {opt} shape is {prob}.
+#        One day, the factory makes {rand} sweets.
+#        Calculate the number of sweets that 
+#        are expected to be {opt} shape.
+#         A. {o1}
+#         B. {o2}
+#         C. {o3}
+#         D. {o4} 
+#         E. {o5}
+#     CA : {ca}
+#                                                                                 .......................... [2] """
+#   option = ['correct','wrong']
+#   opt = random.choice(option)
+#   probrand = random.randint(0000,10000)
+#   prob = probrand/10000
+#   rand = random.randint(10000,70000)
 
-  e = prob * rand
-  ca = math.floor(e)
-  print("ca", ca)
+#   e = prob * rand
+#   ca = math.floor(e)
+#   print("ca", ca)
   
-  a = round(prob * rand) +3
-  b = round(prob * rand) - 2
-  c = round(prob * rand) + 1
-  d = round(prob * rand) - 7 
-  new = [a,b,c,d]
-  newarr = set()
+#   a = round(prob * rand) +3
+#   b = round(prob * rand) - 2
+#   c = round(prob * rand) + 1
+#   d = round(prob * rand) - 7 
+#   new = [a,b,c,d]
+#   newarr = set()
 
-  print(round(prob * rand,2))
-  while len(newarr)<4:
-    r = random.choice(new)
-    newarr.add(r)
-  print(newarr)
-  baru = []
-  for i in newarr:
-    baru.append(i)
+#   print(round(prob * rand,2))
+#   while len(newarr)<4:
+#     r = random.choice(new)
+#     newarr.add(r)
+#   print(newarr)
+#   baru = []
+#   for i in newarr:
+#     baru.append(i)
 
-  baru.append(ca)
-  print(baru)
-  shuffle(baru)
-  o1 = baru[0]
-  o2 = baru[1]
-  o3 = baru[2]
-  o4 = baru[3]
-  o5 = baru[4]
+#   baru.append(ca)
+#   print(baru)
+#   shuffle(baru)
+#   o1 = baru[0]
+#   o2 = baru[1]
+#   o3 = baru[2]
+#   o4 = baru[3]
+#   o5 = baru[4]
 
 
   
   
-  ans = {'q':q ,'opt':opt ,'prob':prob , 'rand' :rand, 'ca':ca,'o1':o1,'o2':o2,'o3':o3,'o4':o4,'o5':o5}
-  fig = plt.figure()
-  ax = fig.add_axes([0, 0, 1, 1])
-  plt.axis('off')
-  fig.show()
+#   ans = {'q':q ,'opt':opt ,'prob':prob , 'rand' :rand, 'ca':ca,'o1':o1,'o2':o2,'o3':o3,'o4':o4,'o5':o5}
+#   fig = plt.figure()
+#   ax = fig.add_axes([0, 0, 1, 1])
+#   plt.axis('off')
+#   fig.show()
 
-  ax.text(0.1, 0.5, ans['q'].format(**ans),
-      horizontalalignment='left',
-      verticalalignment='center',
-      fontsize=15, color='black',
-      transform=ax.transAxes)
-  # this is to convert the graph to the text format to send
-  image = BytesIO()
-  plt.savefig(image, format='png')
-  image.seek(0)
-  I = base64.encodebytes(image.getvalue())
-  return {"photo": I.decode()}
-# send(Q18())
-# Q18()
+#   ax.text(0.1, 0.5, ans['q'].format(**ans),
+#       horizontalalignment='left',
+#       verticalalignment='center',
+#       fontsize=15, color='black',
+#       transform=ax.transAxes)
+#   # this is to convert the graph to the text format to send
+#   image = BytesIO()
+#   plt.savefig(image, format='png')
+#   image.seek(0)
+#   I = base64.encodebytes(image.getvalue())
+#   return {"photo": I.decode()}
+# # send(Q18())
+# # Q18()
 
-#@title Q19(2019FebMarch)
-import string
-def Q19():
-  q = """19   Factorise completely.
-                                    {num1}{ralp} {pow} - {num2}{ralp}
-      {ca}
-                                                                                ........................ [2] """
+# #@title Q19(2019FebMarch)
+# import string
+# def Q19():
+#   q = """19   Factorise completely.
+#                                     {num1}{ralp} {pow} - {num2}{ralp}
+#       {ca}
+#                                                                                 ........................ [2] """
   
-  arr2 = []
-  arr3 = []
-  arr5 = []
-  for i in range(100):
-    if i % 2 == 0:
-      arr2.append(i)
-    elif i % 3 == 0:
-      arr3.append(i)
-    elif i % 5 == 0:
-      arr5.append(i)
+#   arr2 = []
+#   arr3 = []
+#   arr5 = []
+#   for i in range(100):
+#     if i % 2 == 0:
+#       arr2.append(i)
+#     elif i % 3 == 0:
+#       arr3.append(i)
+#     elif i % 5 == 0:
+#       arr5.append(i)
   
-  # if num1 and num2 in arr2 :
-  #   num1 = random.choice(arr2) 
-  #   num2 = random.choice(arr2) 
-  # elif num1 and num2 in arr3:
-  #   num1 = random.choice(arr3) 
-  #   num2 = random.choice(arr3) 
-  # elif num1 and num2 in arr5:
-  #   num1 = random.choice(arr5) 
-  #   num2 = random.choice(arr5) 
-  # else :
-  #   print("nothing")
+#   # if num1 and num2 in arr2 :
+#   #   num1 = random.choice(arr2) 
+#   #   num2 = random.choice(arr2) 
+#   # elif num1 and num2 in arr3:
+#   #   num1 = random.choice(arr3) 
+#   #   num2 = random.choice(arr3) 
+#   # elif num1 and num2 in arr5:
+#   #   num1 = random.choice(arr5) 
+#   #   num2 = random.choice(arr5) 
+#   # else :
+#   #   print("nothing")
 
-  ca = 0 
-  olalp = string.ascii_lowercase
-  alp = random.choice(olalp)
-  ralp = r'$ \mathcal{'+ str(alp) +'}$'
-  rpow = random.randint(2,5)
-  pow = r'$^{'+str(rpow)+'}$'
+#   ca = 0 
+#   olalp = string.ascii_lowercase
+#   alp = random.choice(olalp)
+#   ralp = r'$ \mathcal{'+ str(alp) +'}$'
+#   rpow = random.randint(2,5)
+#   pow = r'$^{'+str(rpow)+'}$'
 
-  new = []
-  for i in range(1,100):
-    new.append(i)
+#   new = []
+#   for i in range(1,100):
+#     new.append(i)
 
-  num1 = random.randint(2,30)
-  num2 = random.randint(2,30)
+#   num1 = random.randint(2,30)
+#   num2 = random.randint(2,30)
   
-  for j in new :
-    while num1 and num2 % j == 0:
-      if (num1 % j == 0) and (num2 % j == 0):
-        ca = str(j)+ str(alp)+  str('(')+ (str(int(num1/j))) +str(alp) + str(r'$^{'+str(rpow-1)+'}$') + str(' - ') + (str(int(num2/j))) +  str(')') 
+#   for j in new :
+#     while num1 and num2 % j == 0:
+#       if (num1 % j == 0) and (num2 % j == 0):
+#         ca = str(j)+ str(alp)+  str('(')+ (str(int(num1/j))) +str(alp) + str(r'$^{'+str(rpow-1)+'}$') + str(' - ') + (str(int(num2/j))) +  str(')') 
       
 
 
-  # if num1 and num2 %5 == 0:
-  #   ca = str(5)+ str(alp)+  str('(')+ (str(int(num1/5))) +str(alp) + str(r'$^{'+str(rpow-1)+'}$') + str(' - ') + (str(int(num1/5))) +  str(')') 
-  # elif num1 and num2 %3 == 0:
-  #   ca = str(3)+ str(alp)+ str('(')+ (str(int(num1/3)))  + str(alp)+ str(r'$^{'+str(rpow-1)+'}$') + str(' - ') + (str(int(num1/3))) + str(')')
-  # elif num1 and num2 %2 == 0:
-  #   ca = str(2)+ str(alp)+  str('(')+ (str(int(num1/2)))  + str(alp)+ str(r'$^{'+str(rpow-1)+'}$') + str(' - ') + (str(int(num1/2))) + str(')')
-  # elif num1 and num2 % num1 == 0:
-  #   ca = str(num1)+ str(alp)+  str('(')+ (str(int(num1/num1)))  + str(alp)+ str(r'$^{'+str(rpow-1)+'}$') + str(' - ') + (str(int(num1/num1))) + str(')')
+#   # if num1 and num2 %5 == 0:
+#   #   ca = str(5)+ str(alp)+  str('(')+ (str(int(num1/5))) +str(alp) + str(r'$^{'+str(rpow-1)+'}$') + str(' - ') + (str(int(num1/5))) +  str(')') 
+#   # elif num1 and num2 %3 == 0:
+#   #   ca = str(3)+ str(alp)+ str('(')+ (str(int(num1/3)))  + str(alp)+ str(r'$^{'+str(rpow-1)+'}$') + str(' - ') + (str(int(num1/3))) + str(')')
+#   # elif num1 and num2 %2 == 0:
+#   #   ca = str(2)+ str(alp)+  str('(')+ (str(int(num1/2)))  + str(alp)+ str(r'$^{'+str(rpow-1)+'}$') + str(' - ') + (str(int(num1/2))) + str(')')
+#   # elif num1 and num2 % num1 == 0:
+#   #   ca = str(num1)+ str(alp)+  str('(')+ (str(int(num1/num1)))  + str(alp)+ str(r'$^{'+str(rpow-1)+'}$') + str(' - ') + (str(int(num1/num1))) + str(')')
   
-  ans = {'q':q , 'pow':pow, 'num1':num1 , 'ralp':ralp , 'num2':num2,'ca':ca}
+#   ans = {'q':q , 'pow':pow, 'num1':num1 , 'ralp':ralp , 'num2':num2,'ca':ca}
 
-  fig = plt.figure()
-  ax = fig.add_axes([0, 0, 1, 1])
-  plt.axis('off')
-  fig.show()
+#   fig = plt.figure()
+#   ax = fig.add_axes([0, 0, 1, 1])
+#   plt.axis('off')
+#   fig.show()
 
-  ax.text(0.1, 0.5, ans['q'].format(**ans),
-      horizontalalignment='left',
-      verticalalignment='center',
-      fontsize=15, color='black',
-      transform=ax.transAxes)
-  # this is to convert the graph to the text format to send
-  image = BytesIO()
-  plt.savefig(image, format='png')
-  image.seek(0)
-  I = base64.encodebytes(image.getvalue())
-  return {"photo": I.decode()}
-Q19()
+#   ax.text(0.1, 0.5, ans['q'].format(**ans),
+#       horizontalalignment='left',
+#       verticalalignment='center',
+#       fontsize=15, color='black',
+#       transform=ax.transAxes)
+#   # this is to convert the graph to the text format to send
+#   image = BytesIO()
+#   plt.savefig(image, format='png')
+#   image.seek(0)
+#   I = base64.encodebytes(image.getvalue())
+#   return {"photo": I.decode()}
+# Q19()
 
-#@title Q19(2019FebMarch) version 2 :)
-import string
-def Q19():
-  q = """19   Factorise completely.
-                                    {num1}{ralp} {pow} - {num2}{ralp}
-      CA : {ca}
-                                                                                """
-  a=random.randint(2,10)
-  b=a
-  while (b==a):
-    b=random.randint(2,10)
-  fract=Fraction(a,b)
-  times=random.randint(2,5)
-  num1=fract.numerator*times
-  num2=fract.denominator*times
-  olalp = string.ascii_lowercase
-  alp = random.choice(olalp)
-  ralp = r'$ \mathcal{'+ str(alp) +'}$'
-  rpow = random.randint(2,5)
-  pow = r'$^{'+str(rpow)+'}$'
-  if (fract.numerator==1):
-    a1=""
-  else:
-    a1=str(fract.numerator)
-    if (fract.denominator==1):
-      a2=""
-    else:
-      a2=str(fract.denominator)
-  ca=str(times)+alp+r'('+a1+alp+"$^{"+a2+"}-"+str(b)+")$"
+# #@title Q19(2019FebMarch) version 2 :)
+# import string
+# def Q19():
+#   q = """19   Factorise completely.
+#                                     {num1}{ralp} {pow} - {num2}{ralp}
+#       CA : {ca}
+#                                                                                 """
+#   a=random.randint(2,10)
+#   b=a
+#   while (b==a):
+#     b=random.randint(2,10)
+#   fract=Fraction(a,b)
+#   times=random.randint(2,5)
+#   num1=fract.numerator*times
+#   num2=fract.denominator*times
+#   olalp = string.ascii_lowercase
+#   alp = random.choice(olalp)
+#   ralp = r'$ \mathcal{'+ str(alp) +'}$'
+#   rpow = random.randint(2,5)
+#   pow = r'$^{'+str(rpow)+'}$'
+#   if (fract.numerator==1):
+#     a1=""
+#   else:
+#     a1=str(fract.numerator)
+#     if (fract.denominator==1):
+#       a2=""
+#     else:
+#       a2=str(fract.denominator)
+#   ca=str(times)+alp+r'('+a1+alp+"$^{"+a2+"}-"+str(b)+")$"
 
 
 
-  # if num1 and num2 %5 == 0:
-  #   ca = str(5)+ str(alp)+  str('(')+ (str(int(num1/5))) +str(alp) + str(r'$^{'+str(rpow-1)+'}$') + str(' - ') + (str(int(num1/5))) +  str(')') 
-  # elif num1 and num2 %3 == 0:
-  #   ca = str(3)+ str(alp)+ str('(')+ (str(int(num1/3)))  + str(alp)+ str(r'$^{'+str(rpow-1)+'}$') + str(' - ') + (str(int(num1/3))) + str(')')
-  # elif num1 and num2 %2 == 0:
-  #   ca = str(2)+ str(alp)+  str('(')+ (str(int(num1/2)))  + str(alp)+ str(r'$^{'+str(rpow-1)+'}$') + str(' - ') + (str(int(num1/2))) + str(')')
-  # elif num1 and num2 % num1 == 0:
-  #   ca = str(num1)+ str(alp)+  str('(')+ (str(int(num1/num1)))  + str(alp)+ str(r'$^{'+str(rpow-1)+'}$') + str(' - ') + (str(int(num1/num1))) + str(')')
+#   # if num1 and num2 %5 == 0:
+#   #   ca = str(5)+ str(alp)+  str('(')+ (str(int(num1/5))) +str(alp) + str(r'$^{'+str(rpow-1)+'}$') + str(' - ') + (str(int(num1/5))) +  str(')') 
+#   # elif num1 and num2 %3 == 0:
+#   #   ca = str(3)+ str(alp)+ str('(')+ (str(int(num1/3)))  + str(alp)+ str(r'$^{'+str(rpow-1)+'}$') + str(' - ') + (str(int(num1/3))) + str(')')
+#   # elif num1 and num2 %2 == 0:
+#   #   ca = str(2)+ str(alp)+  str('(')+ (str(int(num1/2)))  + str(alp)+ str(r'$^{'+str(rpow-1)+'}$') + str(' - ') + (str(int(num1/2))) + str(')')
+#   # elif num1 and num2 % num1 == 0:
+#   #   ca = str(num1)+ str(alp)+  str('(')+ (str(int(num1/num1)))  + str(alp)+ str(r'$^{'+str(rpow-1)+'}$') + str(' - ') + (str(int(num1/num1))) + str(')')
   
-  ans = {'q':q , 'pow':pow, 'num1':num1 , 'ralp':ralp , 'num2':num2,'ca':ca}
+#   ans = {'q':q , 'pow':pow, 'num1':num1 , 'ralp':ralp , 'num2':num2,'ca':ca}
 
-  fig = plt.figure()
-  ax = fig.add_axes([0, 0, 1, 1])
-  plt.axis('off')
-  fig.show()
+#   fig = plt.figure()
+#   ax = fig.add_axes([0, 0, 1, 1])
+#   plt.axis('off')
+#   fig.show()
 
-  ax.text(0.1, 0.5, ans['q'].format(**ans),
-      horizontalalignment='left',
-      verticalalignment='center',
-      fontsize=15, color='black',
-      transform=ax.transAxes)
-  # this is to convert the graph to the text format to send
-  image = BytesIO()
-  plt.savefig(image, format='png')
-  image.seek(0)
-  I = base64.encodebytes(image.getvalue())
-  return {"photo": I.decode()}
-Q19()
+#   ax.text(0.1, 0.5, ans['q'].format(**ans),
+#       horizontalalignment='left',
+#       verticalalignment='center',
+#       fontsize=15, color='black',
+#       transform=ax.transAxes)
+#   # this is to convert the graph to the text format to send
+#   image = BytesIO()
+#   plt.savefig(image, format='png')
+#   image.seek(0)
+#   I = base64.encodebytes(image.getvalue())
+#   return {"photo": I.decode()}
+# Q19()
 
-#@title Q20(2019FebMarch)
-import sympy
-import re
+# #@title Q20(2019FebMarch)
+# import sympy
+# import re
 
-def solve(eq, var=('x', 'y')):
-    """ Solve a system of simultaneous equation in
-    two variables of the form
-    2*x + 5*y=c1; 3*x - 5*y=c2
-    Example: solve('12*x - 3*y = 21; 9*x  - 18*y=0')
-    Should work for negative constants as well.
-    Example: solve('3*x - 5*y=-11; 12*x + 3*y=48')
-    Returns a two tuple of (x, y) values.
-    NOTE: Won't denegarate to the special case
-    of solving for only one variable.
+# def solve(eq, var=('x', 'y')):
+#     """ Solve a system of simultaneous equation in
+#     two variables of the form
+#     2*x + 5*y=c1; 3*x - 5*y=c2
+#     Example: solve('12*x - 3*y = 21; 9*x  - 18*y=0')
+#     Should work for negative constants as well.
+#     Example: solve('3*x - 5*y=-11; 12*x + 3*y=48')
+#     Returns a two tuple of (x, y) values.
+#     NOTE: Won't denegarate to the special case
+#     of solving for only one variable.
     
-    """
+#     """
 
-    var_re = re.compile(r'(\+|\-)\s*(\d*)\s*\*?\s*(x|y)')
-    const_re = re.compile(r'(\+|\-)\s*(\-?\d+)$')
+#     var_re = re.compile(r'(\+|\-)\s*(\d*)\s*\*?\s*(x|y)')
+#     const_re = re.compile(r'(\+|\-)\s*(\-?\d+)$')
 
-    constants, eqns, coeffs, default  = [],[], {'x': [], 'y': []}, {'': '1'}
+#     constants, eqns, coeffs, default  = [],[], {'x': [], 'y': []}, {'': '1'}
 
-    for e in eq.split(';'):
-        eq1 = e.replace("="," - ").strip()
-        if not eq1.startswith('-'):
-            eq1 = '+' + eq1
-        eqns.append(eq1)
+#     for e in eq.split(';'):
+#         eq1 = e.replace("="," - ").strip()
+#         if not eq1.startswith('-'):
+#             eq1 = '+' + eq1
+#         eqns.append(eq1)
 
-    var_eq1, var_eq2 = map(var_re.findall, eqns)
+#     var_eq1, var_eq2 = map(var_re.findall, eqns)
 
-    constants = [-1*int(x[0][1]) for x in map(const_re.findall, eqns)]
-    [coeffs[x[2]].append(int((x[0]+ default.get(x[1], x[1])).strip())) for x in (var_eq1 + var_eq2)]
+#     constants = [-1*int(x[0][1]) for x in map(const_re.findall, eqns)]
+#     [coeffs[x[2]].append(int((x[0]+ default.get(x[1], x[1])).strip())) for x in (var_eq1 + var_eq2)]
     
-    ycoeff = coeffs['y']
-    xcoeff = coeffs['x']
+#     ycoeff = coeffs['y']
+#     xcoeff = coeffs['x']
 
-    # Adjust equations to take out y and solve for x
-    if ycoeff[0]*ycoeff[1] > 0:
-        ycoeff[1] *= -1
-        xcoeff[0] *= ycoeff[1]
-        constants[0] *= -1*ycoeff[1]        
-    else:
-        xcoeff[0] *= -1*ycoeff[1]
-        constants[0] *= ycoeff[1]
+#     # Adjust equations to take out y and solve for x
+#     if ycoeff[0]*ycoeff[1] > 0:
+#         ycoeff[1] *= -1
+#         xcoeff[0] *= ycoeff[1]
+#         constants[0] *= -1*ycoeff[1]        
+#     else:
+#         xcoeff[0] *= -1*ycoeff[1]
+#         constants[0] *= ycoeff[1]
         
-    xcoeff[1] *= ycoeff[0]
-    constants[1] *= -1*ycoeff[0]
+#     xcoeff[1] *= ycoeff[0]
+#     constants[1] *= -1*ycoeff[0]
 
-    # Obtain x
-    xval = sum(constants)*1.0/sum(xcoeff)
+#     # Obtain x
+#     xval = sum(constants)*1.0/sum(xcoeff)
 
-    # Now solve for y using value of x
-    z = eval(eqns[0],{'x': xval, 'y': 1j})
-    yval = -z.real*1.0/z.imag
+#     # Now solve for y using value of x
+#     z = eval(eqns[0],{'x': xval, 'y': 1j})
+#     yval = -z.real*1.0/z.imag
 
-    return (xval, yval)
-def Q20():
-  q = """
+#     return (xval, yval)
+# def Q20():
+#   q = """
   
-  20            {eqn1}
-                {eqn2}
-      Ans: x = {x} ; y = {y}
-  """
-  a = random.randint(-14,-10)
-  x1 = random.randint(1,5)
-  y1 = random.randint(1,6)
-  solvedX = x1
-  solvedY = y1
+#   20            {eqn1}
+#                 {eqn2}
+#       Ans: x = {x} ; y = {y}
+#   """
+#   a = random.randint(-14,-10)
+#   x1 = random.randint(1,5)
+#   y1 = random.randint(1,6)
+#   solvedX = x1
+#   solvedY = y1
   
-  b = random.randint(12,15)
-  x2 = random.randint(1,5)
-  y2 = random.randint(1,6)
-  solvedX2 = x2
-  solvedY2 = y2
+#   b = random.randint(12,15)
+#   x2 = random.randint(1,5)
+#   y2 = random.randint(1,6)
+#   solvedX2 = x2
+#   solvedY2 = y2
 
-  if x1 == 1:
-    x1 = ""
-  if x2 == 1:
-    x2 = ""
-  if y1 == 1:
-    y1 = ""
-  if y2 == 1:
-    y2 = ""
+#   if x1 == 1:
+#     x1 = ""
+#   if x2 == 1:
+#     x2 = ""
+#   if y1 == 1:
+#     y1 = ""
+#   if y2 == 1:
+#     y2 = ""
 
-  ca = solve(str(solvedX) + '*x -' + str(solvedY)+'*y =' + str(a) + ';' + str(solvedX2) + '*x +'+str(solvedY2) + '*y = ' + str(b))
-  eqn1 = r'$' + str(x1) + '{x} -' + str(y1) + '{y}$ = ' + str(a)
-  eqn2 = r'$' + str(x2) + '{x} +' + str(y2) + '{y}$ = ' + str(b)
-  ans = {"q":q, "x1":x1, "y1":y1, "x2":x2, "y2":y2, "a":a, "b":b, "eqn1":eqn1, "eqn2":eqn2, "x":round(ca[0],2), "y":round(ca[1],2)}
+#   ca = solve(str(solvedX) + '*x -' + str(solvedY)+'*y =' + str(a) + ';' + str(solvedX2) + '*x +'+str(solvedY2) + '*y = ' + str(b))
+#   eqn1 = r'$' + str(x1) + '{x} -' + str(y1) + '{y}$ = ' + str(a)
+#   eqn2 = r'$' + str(x2) + '{x} +' + str(y2) + '{y}$ = ' + str(b)
+#   ans = {"q":q, "x1":x1, "y1":y1, "x2":x2, "y2":y2, "a":a, "b":b, "eqn1":eqn1, "eqn2":eqn2, "x":round(ca[0],2), "y":round(ca[1],2)}
 
-  fig = plt.figure()
-  ax = fig.add_axes([0, 0, 1, 1])
-  plt.axis('off')
-  fig.show()
+#   fig = plt.figure()
+#   ax = fig.add_axes([0, 0, 1, 1])
+#   plt.axis('off')
+#   fig.show()
 
-  ax.text(0.1, 0.5, ans['q'].format(**ans),
-      horizontalalignment='left',
-      verticalalignment='center',
-      fontsize=15, color='black',
-      transform=ax.transAxes)
-  # this is to convert the graph to the text format to send
-  image = BytesIO()
-  plt.savefig(image, format='png')
-  image.seek(0)
-  I = base64.encodebytes(image.getvalue())
-  return {"photo": I.decode()}
-Q20()
+#   ax.text(0.1, 0.5, ans['q'].format(**ans),
+#       horizontalalignment='left',
+#       verticalalignment='center',
+#       fontsize=15, color='black',
+#       transform=ax.transAxes)
+#   # this is to convert the graph to the text format to send
+#   image = BytesIO()
+#   plt.savefig(image, format='png')
+#   image.seek(0)
+#   I = base64.encodebytes(image.getvalue())
+#   return {"photo": I.decode()}
+# Q20()
 
-def Q202():
-  q = """20.Factorise completely.
+# def Q202():
+#   q = """20.Factorise completely.
   
             
-                            {x}
-          A) {o1}
-          B) {o2}
-          C) {o3}
-          D) {o4}
-          E) {o5}  
+#                             {x}
+#           A) {o1}
+#           B) {o2}
+#           C) {o3}
+#           D) {o4}
+#           E) {o5}  
   
-  answer:{answer}
-  """
-  b1=random.randint(2,5)
-  b2=random.randint(1,10)
-  b3=random.randint(1,5)
-  b4=random.randint(1,10)
-  a1=b1*b3
-  a2=b1*b4+b2*b3
-  a3=b2*b4
-  a4=2
-  if b3==1:
-    b3=""
+#   answer:{answer}
+#   """
+#   b1=random.randint(2,5)
+#   b2=random.randint(1,10)
+#   b3=random.randint(1,5)
+#   b4=random.randint(1,10)
+#   a1=b1*b3
+#   a2=b1*b4+b2*b3
+#   a3=b2*b4
+#   a4=2
+#   if b3==1:
+#     b3=""
 
-  answer="("+str(b1)+"x+"+str(b2)+")("+str(b3)+"x+"+str(b4)+")"
-  options=set()
-  options.add(answer)
+#   answer="("+str(b1)+"x+"+str(b2)+")("+str(b3)+"x+"+str(b4)+")"
+#   options=set()
+#   options.add(answer)
 
-  while len(options)<5:
-    options.add("("+str(b1+random.randint(1,5))+"x+"+str(b2+random.randint(1,5))+")("+str(b3+random.randint(1,5))+"x+"+str(b4+random.randint(1,5))+")")
-  options=list(options)
-  shuffle(options)  
+#   while len(options)<5:
+#     options.add("("+str(b1+random.randint(1,5))+"x+"+str(b2+random.randint(1,5))+")("+str(b3+random.randint(1,5))+"x+"+str(b4+random.randint(1,5))+")")
+#   options=list(options)
+#   shuffle(options)  
 
-  x=str(a1)+"C"+"$^{"+str(a4)+"}$"+"+"+str(a2)+"C+"+str(a3)
-  ans={"q":q,"x":x,"answer":answer,"o1":options[0],"o2":options[1],"o3":options[2],"o4":options[3],"o5":options[4]}
+#   x=str(a1)+"C"+"$^{"+str(a4)+"}$"+"+"+str(a2)+"C+"+str(a3)
+#   ans={"q":q,"x":x,"answer":answer,"o1":options[0],"o2":options[1],"o3":options[2],"o4":options[3],"o5":options[4]}
 
-  # ans = {'q':q , 'num1': num1, 'num2': num2 , 'num3': num3 , 'num4': num4, 'x':x , 'y':y ,  'result': result, 'result2':result2}
-  fig = plt.figure()
-  ax = fig.add_axes([0, 0, 1, 1])
-  plt.axis('off')
-  fig.show()
+#   # ans = {'q':q , 'num1': num1, 'num2': num2 , 'num3': num3 , 'num4': num4, 'x':x , 'y':y ,  'result': result, 'result2':result2}
+#   fig = plt.figure()
+#   ax = fig.add_axes([0, 0, 1, 1])
+#   plt.axis('off')
+#   fig.show()
 
-  ax.text(0.1, 0.5, ans['q'].format(**ans),
-      horizontalalignment='left',
-      verticalalignment='center',
-      fontsize=15, color='black',
-      transform=ax.transAxes)
-  # this is to convert the graph to the text format to send
-  image = BytesIO()
-  plt.savefig(image, format='png')
-  image.seek(0)
-  I = base64.encodebytes(image.getvalue())
-  return {"photo": I.decode()}
-Q202()
+#   ax.text(0.1, 0.5, ans['q'].format(**ans),
+#       horizontalalignment='left',
+#       verticalalignment='center',
+#       fontsize=15, color='black',
+#       transform=ax.transAxes)
+#   # this is to convert the graph to the text format to send
+#   image = BytesIO()
+#   plt.savefig(image, format='png')
+#   image.seek(0)
+#   I = base64.encodebytes(image.getvalue())
+#   return {"photo": I.decode()}
+# Q202()
 
-def Q21():
-  q = """
-  
-  
+# def Q21():
+#   q = """
   
   
   
@@ -1767,335 +1765,337 @@ def Q21():
   
   
   
-  21. Calculate the total surface area of the cuboid.
-  """
-  font = {'family': 'serif',
-          'color':  'black',
-          'weight': 'normal',
-          'size': 14,
-          }
-  fig = plt.figure()
-  ax = fig.add_axes([0,0,1,1]) #add_axes(rect) where rect = [x0, y0, width, height]
-  plt.axis('off')
-  ax.set_ylim([0, 10])   # set the bounds to be 10, 10
-  ax.set_xlim([0, 10])
-
-  ax.plot([2,8,8,9,9,8],[2,2,5,7,4,2], 'k', linewidth=1)
-  ax.plot([8,2,2],[5,5,2], 'k', linewidth=1)
-  ax.plot([2,3.4,9],[5,7,7], 'k', linewidth=1)
-
-  ax.text(4.3,1.5,"{num}cm",fontdict=font)
-  ax.text(9,5,"{num2}cm",fontdict=font)
-  ax.text(9,5,"{num2}cm",fontdict=font)
-  ax.text(8.5,3,"str(num)+cm",fontdict=font)
-  ax.text(8.6,0.4,"NOT TO\nSCALE",fontdict=font)
-  
-  num = random.randint(10,20)
-  num2 = random.randint(7,10)
-  num3 = random.randint(3,6)
-
-  ans = {'q':q, 'num':num, 'num2':num2, 'num3':num3}
-  ax.text(0.1, 0.3, ans['q'].format(**ans),
-        horizontalalignment='left',
-        verticalalignment='center',
-        fontsize=12, color='black',
-        transform=ax.transAxes)
-
-  #this is to convert the graph to the text format to send
-  #plt.show() #show the figure
-  image = BytesIO()
-  plt.savefig(image, format='png')
-  #plt.savefig('image.png')
-  image.seek(0)
-  I=base64.encodebytes(image.getvalue())
-
-Q21()
-
-#@title Q22(2019FebMarch)
-import math
-def Q22():
-  q = """
-  
-22   The number of passengers on a train 
-        {change} from {num1} to {num2}.
-        Calculate the percentage {change}.
-      A) {o1}%
-      B) {o2}%
-      C) {o3}%
-      D) {o4}%
-      E) {o5}%
-    CA : {ca}%
-                                                                                ....................... % [3]
-"""
-  op = ['increase','decrease']
-  change = random.choice(op)
-  num1 = 5
-  num2 = 5
-  ca = 0
-  hm = 0
-  while num1 == num2 :
-    if change == op[0]:
-      num1 = random.randint(50,100)
-      while num1 > num2:
-        num2 = random.randint(50,100)
-      hm = ((num2 - num1)/num1) * 100
-      ca = math.floor(hm)
-    elif change == op[1]:
-      num1 = random.randint(50,100)
-      while num1 < num2:
-        num2 = random.randint(50,100)
-      hm = ((num1 - num2)/num1) * 100
-      ca = math.floor(hm)
-  
-  new = set()
-  while len(new) < 4:
-    r = random.randint(5,100)
-    if r != ca:
-      new.add(r)
-  newarr = []
-  for j in new:
-    newarr.append(j)
-  newarr.append(ca)
-  shuffle(newarr)
-
-  print(ca)
-
-  o1 = newarr[0]
-  o2 = newarr[1]
-  o3 = newarr[2]
-  o4 = newarr[3]
-  o5 = newarr[4]
-
-  ans = {'q':q , 'num1':num1 , 'num2':num2, 'change':change,'ca':ca, 'o1':o1,'o2':o2,'o3':o3,'o4':o4,'o5':o5}
-  fig = plt.figure()
-  ax = fig.add_axes([0, 0, 1, 1])
-  plt.axis('off')
-  fig.show()
-
-  ax.text(0.1, 0.5, ans['q'].format(**ans),
-      horizontalalignment='left',
-      verticalalignment='center',
-      fontsize=15, color='black',
-      transform=ax.transAxes)
-  # this is to convert the graph to the text format to send
-  image = BytesIO()
-  plt.savefig(image, format='png')
-  image.seek(0)
-  I = base64.encodebytes(image.getvalue())
-  return {"photo": I.decode()}
-# send(Q22())
-
-def Q23():
-  c="""
   
   
-  23 The diagram shows a quadrilateral 
-        on a 1 cm2 grid.
-  (a) Write down the mathematical name 
-      of this quadrilateral.
+#   21. Calculate the total surface area of the cuboid.
+#   """
+#   font = {'family': 'serif',
+#           'color':  'black',
+#           'weight': 'normal',
+#           'size': 14,
+#           }
+#   fig = plt.figure()
+#   ax = fig.add_axes([0,0,1,1]) #add_axes(rect) where rect = [x0, y0, width, height]
+#   plt.axis('off')
+#   ax.set_ylim([0, 10])   # set the bounds to be 10, 10
+#   ax.set_xlim([0, 10])
+
+#   ax.plot([2,8,8,9,9,8],[2,2,5,7,4,2], 'k', linewidth=1)
+#   ax.plot([8,2,2],[5,5,2], 'k', linewidth=1)
+#   ax.plot([2,3.4,9],[5,7,7], 'k', linewidth=1)
+
+#   ax.text(4.3,1.5,"{num}cm",fontdict=font)
+#   ax.text(9,5,"{num2}cm",fontdict=font)
+#   ax.text(9,5,"{num2}cm",fontdict=font)
+#   ax.text(8.5,3,"str(num)+cm",fontdict=font)
+#   ax.text(8.6,0.4,"NOT TO\nSCALE",fontdict=font)
+  
+#   num = random.randint(10,20)
+#   num2 = random.randint(7,10)
+#   num3 = random.randint(3,6)
+
+#   ans = {'q':q, 'num':num, 'num2':num2, 'num3':num3}
+#   ax.text(0.1, 0.3, ans['q'].format(**ans),
+#         horizontalalignment='left',
+#         verticalalignment='center',
+#         fontsize=12, color='black',
+#         transform=ax.transAxes)
+
+#   #this is to convert the graph to the text format to send
+#   #plt.show() #show the figure
+#   image = BytesIO()
+#   plt.savefig(image, format='png')
+#   #plt.savefig('image.png')
+#   image.seek(0)
+#   I=base64.encodebytes(image.getvalue())
+
+# Q21()
+
+# #@title Q22(2019FebMarch)
+# import math
+# def Q22():
+#   q = """
+  
+# 22   The number of passengers on a train 
+#         {change} from {num1} to {num2}.
+#         Calculate the percentage {change}.
+#       A) {o1}%
+#       B) {o2}%
+#       C) {o3}%
+#       D) {o4}%
+#       E) {o5}%
+#     CA : {ca}%
+#                                                                                 ....................... % [3]
+# """
+#   op = ['increase','decrease']
+#   change = random.choice(op)
+#   num1 = 5
+#   num2 = 5
+#   ca = 0
+#   hm = 0
+#   while num1 == num2 :
+#     if change == op[0]:
+#       num1 = random.randint(50,100)
+#       while num1 > num2:
+#         num2 = random.randint(50,100)
+#       hm = ((num2 - num1)/num1) * 100
+#       ca = math.floor(hm)
+#     elif change == op[1]:
+#       num1 = random.randint(50,100)
+#       while num1 < num2:
+#         num2 = random.randint(50,100)
+#       hm = ((num1 - num2)/num1) * 100
+#       ca = math.floor(hm)
+  
+#   new = set()
+#   while len(new) < 4:
+#     r = random.randint(5,100)
+#     if r != ca:
+#       new.add(r)
+#   newarr = []
+#   for j in new:
+#     newarr.append(j)
+#   newarr.append(ca)
+#   shuffle(newarr)
+
+#   print(ca)
+
+#   o1 = newarr[0]
+#   o2 = newarr[1]
+#   o3 = newarr[2]
+#   o4 = newarr[3]
+#   o5 = newarr[4]
+
+#   ans = {'q':q , 'num1':num1 , 'num2':num2, 'change':change,'ca':ca, 'o1':o1,'o2':o2,'o3':o3,'o4':o4,'o5':o5}
+#   fig = plt.figure()
+#   ax = fig.add_axes([0, 0, 1, 1])
+#   plt.axis('off')
+#   fig.show()
+
+#   ax.text(0.1, 0.5, ans['q'].format(**ans),
+#       horizontalalignment='left',
+#       verticalalignment='center',
+#       fontsize=15, color='black',
+#       transform=ax.transAxes)
+#   # this is to convert the graph to the text format to send
+#   image = BytesIO()
+#   plt.savefig(image, format='png')
+#   image.seek(0)
+#   I = base64.encodebytes(image.getvalue())
+#   return {"photo": I.decode()}
+# # send(Q22())
+
+# def Q23():
+#   c="""
+  
+  
+#   23 The diagram shows a quadrilateral 
+#         on a 1 cm2 grid.
+#   (a) Write down the mathematical name 
+#       of this quadrilateral.
     
-  (b) Work out the area of this quadrilateral.
-        Give the units of your answer                                                              
-    """
+#   (b) Work out the area of this quadrilateral.
+#         Give the units of your answer                                                              
+#     """
 
-  ans={"q":c}
+#   ans={"q":c}
 
-  fig = plt.figure()
-  ax = fig.add_axes([0,0,1,1])
-  plt.axis('on')
+#   fig = plt.figure()
+#   ax = fig.add_axes([0,0,1,1])
+#   plt.axis('on')
 
-  ax.text(0.05, 0.15, ans['q'].format(**ans),
-        horizontalalignment='left',
-        verticalalignment='center',
-        fontsize=10, color='black',
-        transform=ax.transAxes)
+#   ax.text(0.05, 0.15, ans['q'].format(**ans),
+#         horizontalalignment='left',
+#         verticalalignment='center',
+#         fontsize=10, color='black',
+#         transform=ax.transAxes)
   
-  #start
-  fig2 = fig.add_subplot(1, 1, 1)
+#   #start
+#   fig2 = fig.add_subplot(1, 1, 1)
 
-  #buat grid
-  for x in range(10):
-    plt.hlines(x,0,10, lw=2, color='0.8', zorder=2,linestyles="solid")
-    plt.vlines(x,0,10, lw=2, color='0.8', zorder=2,linestyles="solid")
-  plt.vlines(0,0,10, lw=2, color='k', zorder=5,linestyles="solid")
-  plt.subplots_adjust(bottom=0.4,top=0.97,left=0.1,right=0.6)
-  #triangle tgh
-  plt.plot([1,9,7,3,1], [3,3,7,7,3],color="black")
+#   #buat grid
+#   for x in range(10):
+#     plt.hlines(x,0,10, lw=2, color='0.8', zorder=2,linestyles="solid")
+#     plt.vlines(x,0,10, lw=2, color='0.8', zorder=2,linestyles="solid")
+#   plt.vlines(0,0,10, lw=2, color='k', zorder=5,linestyles="solid")
+#   plt.subplots_adjust(bottom=0.4,top=0.97,left=0.1,right=0.6)
+#   #triangle tgh
+#   plt.plot([1,9,7,3,1], [3,3,7,7,3],color="black")
    
 
-  ####################### scale x,y ###################
-  plt.ylim(0, 10)
-  plt.xlim(0, 10)
-  ax.text(0, 1, ans['q'].format(**ans), horizontalalignment='left',verticalalignment='center', transform=ax.transAxes)
-  image = BytesIO()
-  plt.savefig(image, format='png')
-  image.seek(0)
-  I=base64.encodebytes(image.getvalue())
-  return {"photo": I.decode(), "Type":Q_type.photo}
-Q23()
+#   ####################### scale x,y ###################
+#   plt.ylim(0, 10)
+#   plt.xlim(0, 10)
+#   ax.text(0, 1, ans['q'].format(**ans), horizontalalignment='left',verticalalignment='center', transform=ax.transAxes)
+#   image = BytesIO()
+#   plt.savefig(image, format='png')
+#   image.seek(0)
+#   I=base64.encodebytes(image.getvalue())
+#   return {"photo": I.decode(), "Type":Q_type.photo}
+# Q23()
 
-#@title Q24(2019FebMarch)
-import inflect
-import random
-import numpy as np
+# #@title Q24(2019FebMarch)
+# import inflect
+# import random
+# import numpy as np
 
-def Q24():
-  q = """
+# def Q24():
+#   q = """
   
   
-24  {wordNum} numbers have a mean of {mean} .
-      {wordMinusOne} of the numbers are {new}.
-      Work out the range of the {wordNum} numbers.
+# 24  {wordNum} numbers have a mean of {mean} .
+#       {wordMinusOne} of the numbers are {new}.
+#       Work out the range of the {wordNum} numbers.
     
-                                                ............................ [4]
-    CA : range {ca} , missing number : {missing}
+#                                                 ............................ [4]
+#     CA : range {ca} , missing number : {missing}
                                                                                 
-  """
-  tryje = inflect.engine()
-  num = random.randint(3, 6)
-  wordNum = tryje.number_to_words(num).capitalize()
-  numMinusOne = num -1
-  wordMinusOne = tryje.number_to_words(numMinusOne).capitalize()
-  new = []
-  total = 0
-  print("the number is : " , num)
-  for i in range (num):
-      a = random.randint(3,20)
-      new.append(a)
-      # if a not in new: #removeduplicate
-      #     new.append(a)
-  newarr = []
-  for j in new:
-    newarr.append(j)
-  print(new)
-  ca = newarr
-  total = sum(new)
-  mean = round((total/num),2)
+#   """
+#   tryje = inflect.engine()
+#   num = random.randint(3, 6)
+#   wordNum = tryje.number_to_words(num).capitalize()
+#   numMinusOne = num -1
+#   wordMinusOne = tryje.number_to_words(numMinusOne).capitalize()
+#   new = []
+#   total = 0
+#   print("the number is : " , num)
+#   for i in range (num):
+#       a = random.randint(3,20)
+#       new.append(a)
+#       # if a not in new: #removeduplicate
+#       #     new.append(a)
+#   newarr = []
+#   for j in new:
+#     newarr.append(j)
+#   print(new)
+#   ca = newarr
+#   total = sum(new)
+#   mean = round((total/num),2)
   
-  missing = new.pop()
-  totalaftModify = sum(new)
+#   missing = new.pop()
+#   totalaftModify = sum(new)
   
 
-  hilang = set()
-  while len(hilang) < 4:
-    r = random.randint(3,20)
-    if r!=missing:
-      hilang.add(r)
-  baru = []
-  for m in hilang:
-    baru.append(m)
+#   hilang = set()
+#   while len(hilang) < 4:
+#     r = random.randint(3,20)
+#     if r!=missing:
+#       hilang.add(r)
+#   baru = []
+#   for m in hilang:
+#     baru.append(m)
 
-  print(baru)
-  print("aft modify : ",new)
-  print("total : ",total," mean : ",mean," missing : ",missing, " total aft modify :",totalaftModify)
+#   print(baru)
+#   print("aft modify : ",new)
+#   print("total : ",total," mean : ",mean," missing : ",missing, " total aft modify :",totalaftModify)
 
-  ans = {'q':q, 'wordNum':wordNum , 'mean':mean, 'wordMinusOne': wordMinusOne ,'new':new, 'ca':ca, 'missing':missing}
+#   ans = {'q':q, 'wordNum':wordNum , 'mean':mean, 'wordMinusOne': wordMinusOne ,'new':new, 'ca':ca, 'missing':missing}
 
-  fig = plt.figure()
-  ax = fig.add_axes([0, 0, 1, 1])
-  plt.axis('off')
-  fig.show()
+#   fig = plt.figure()
+#   ax = fig.add_axes([0, 0, 1, 1])
+#   plt.axis('off')
+#   fig.show()
 
-  ax.text(0.1, 0.5, ans['q'].format(**ans),
-      horizontalalignment='left',
-      verticalalignment='center',
-      fontsize=15, color='black',
-      transform=ax.transAxes)
-  # this is to convert the graph to the text format to send
-  image = BytesIO()
-  plt.savefig(image, format='png')
-  image.seek(0)
-  I = base64.encodebytes(image.getvalue())
-  return {"photo": I.decode()}
-# send(Q24())
+#   ax.text(0.1, 0.5, ans['q'].format(**ans),
+#       horizontalalignment='left',
+#       verticalalignment='center',
+#       fontsize=15, color='black',
+#       transform=ax.transAxes)
+#   # this is to convert the graph to the text format to send
+#   image = BytesIO()
+#   plt.savefig(image, format='png')
+#   image.seek(0)
+#   I = base64.encodebytes(image.getvalue())
+#   return {"photo": I.decode()}
+# # send(Q24())
 
-#@title Q25(2019FebMarch)
-from fractions import Fraction
-def Q25():
-  q = """
+# #@title Q25(2019FebMarch)
+# from fractions import Fraction
+# def Q25():
+#   q = """
   
   
-25   Without using calcuator, 
-       work out {num} {num1} {op} {num2}
-       You must show all your working and 
-       give your answer as a mixed number 
-       in its simplest form.
+# 25   Without using calcuator, 
+#        work out {num} {num1} {op} {num2}
+#        You must show all your working and 
+#        give your answer as a mixed number 
+#        in its simplest form.
           
          
-      CA : {ca} , {ca1}
-                                                                            ..........................[4]"""
-  num = random.randint(2,8)
-  bold = r'$\mathbf{'+ str("Without using calculator")+'}$'
-  ###############################
-  a = 1
-  b = 1
-  while a > b or b == a:
-    b = random.randint(1,8)
-  ############################
-  c = 1
-  d = 1
-  while c > d or c == d:
-     d= random.randint(1,8)
-  #############################
-  num1 = r'$\frac{'+ str(a) +'}{'+ str(b) +'}$'
-  op = u"\u00F7"
-  num2 = r'$\frac{'+ str(c) +'}{'+ str(d) +'}$'
-  #############################
-  awal = (b*num)+a
-  satu = awal*d
-  dua = (b * c)
+#       CA : {ca} , {ca1}
+#                                                                             ..........................[4]"""
+#   num = random.randint(2,8)
+#   bold = r'$\mathbf{'+ str("Without using calculator")+'}$'
+#   ###############################
+#   a = 1
+#   b = 1
+#   while a > b or b == a:
+#     b = random.randint(1,8)
+#   ############################
+#   c = 1
+#   d = 1
+#   while c > d or c == d:
+#      d= random.randint(1,8)
+#   #############################
+#   num1 = r'$\frac{'+ str(a) +'}{'+ str(b) +'}$'
+#   op = u"\u00F7"
+#   num2 = r'$\frac{'+ str(c) +'}{'+ str(d) +'}$'
+#   #############################
+#   awal = (b*num)+a
+#   satu = awal*d
+#   dua = (b * c)
    
   
-  deno = 0
-  tempat = []
-  alif = int(satu/dua)
-  ba = satu%dua
-  tha = dua
-  unser = str(alif) + r'$\frac{'+ str(ba) +'}{'+ str(tha) +'}$'
-  jwpn = r'$\frac{'+ str(satu) +'}{'+ str(dua) +'}$'
-  ca1 = jwpn
-  ca = 0
-  for m in range(2,100):
-    if satu % m == 0 and dua % m == 0:
-      tempat.append(m)
-      deno = int(dua/(max(tempat)))
-      ca = r'$\frac{'+ str(int(satu/(max(tempat)))) +'}{'+ str(deno) +'}$'
-      print(ca)
-    elif len(tempat) == 1:
-      nume = int(satu/(max(tempat)))
-      hm = r'$\frac{'+ str(nume) +'}{'+ str(deno) +'}$'
-      alif = int(nume/deno)
-      ba = nume%deno
-      tha = deno
-      ca = str(alif) + r'$\frac{'+ str(ba) +'}{'+ str(tha) +'}$'
-    else:
-      ca = unser
+#   deno = 0
+#   tempat = []
+#   alif = int(satu/dua)
+#   ba = satu%dua
+#   tha = dua
+#   unser = str(alif) + r'$\frac{'+ str(ba) +'}{'+ str(tha) +'}$'
+#   jwpn = r'$\frac{'+ str(satu) +'}{'+ str(dua) +'}$'
+#   ca1 = jwpn
+#   ca = 0
+#   for m in range(2,100):
+#     if satu % m == 0 and dua % m == 0:
+#       tempat.append(m)
+#       deno = int(dua/(max(tempat)))
+#       ca = r'$\frac{'+ str(int(satu/(max(tempat)))) +'}{'+ str(deno) +'}$'
+#       print(ca)
+#     elif len(tempat) == 1:
+#       nume = int(satu/(max(tempat)))
+#       hm = r'$\frac{'+ str(nume) +'}{'+ str(deno) +'}$'
+#       alif = int(nume/deno)
+#       ba = nume%deno
+#       tha = deno
+#       ca = str(alif) + r'$\frac{'+ str(ba) +'}{'+ str(tha) +'}$'
+#     else:
+#       ca = unser
 
-  print(tempat)
-  # print(max(tempat))
-  # print(ca)
-  # print(satu)
-  # print(dua)
+#   print(tempat)
+#   # print(max(tempat))
+#   # print(ca)
+#   # print(satu)
+#   # print(dua)
 
-  if deno == 1:
-    ca = str(int(satu/(max(tempat))))
+#   if deno == 1:
+#     ca = str(int(satu/(max(tempat))))
   
 
-  ans = {'q':q , 'num':num , 'num1':num1, 'op':op, 'num2':num2, 'jwpn':jwpn , 'ca':ca, 'ca1':ca1}
+#   ans = {'q':q , 'num':num , 'num1':num1, 'op':op, 'num2':num2, 'jwpn':jwpn , 'ca':ca, 'ca1':ca1}
 
-  fig = plt.figure()
-  ax = fig.add_axes([0, 0, 1, 1])
-  plt.axis('off')
-  fig.show()
+#   fig = plt.figure()
+#   ax = fig.add_axes([0, 0, 1, 1])
+#   plt.axis('off')
+#   fig.show()
 
-  ax.text(0.1, 0.5, ans['q'].format(**ans),
-      horizontalalignment='left',
-      verticalalignment='center',
-      fontsize=15, color='black',
-      transform=ax.transAxes)
-  # this is to convert the graph to the text format to send
-  image = BytesIO()
-  plt.savefig(image, format='png')
-  image.seek(0)
-  I = base64.encodebytes(image.getvalue())
-  return {"photo": I.decode()}
+#   ax.text(0.1, 0.5, ans['q'].format(**ans),
+#       horizontalalignment='left',
+#       verticalalignment='center',
+#       fontsize=15, color='black',
+#       transform=ax.transAxes)
+#   # this is to convert the graph to the text format to send
+#   image = BytesIO()
+#   plt.savefig(image, format='png')
+#   image.seek(0)
+#   I = base64.encodebytes(image.getvalue())
+#   return {"photo": I.decode()}
