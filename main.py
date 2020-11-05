@@ -3,7 +3,7 @@ from flask_restful import Api, Resource
 from flask_cors import CORS
 
 import os
-mypath=os.listdir('./')
+mypath=os.listdir('./questions')
 print('-'*10)
 print(mypath)
 
