@@ -53,6 +53,12 @@ api.add_resource(HelloWorld, "/helloworld/<string:name>")
 def index():
     return render_template('test.html',q="q3")
 
+
+@app.route('/review')
+def index():
+    return render_template('review.html')
+
+
 @app.route('/aboutus')
 def aboutus():
     return "we are happy"
