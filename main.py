@@ -56,7 +56,6 @@ def index():
 
 @app.route('/review')
 def review():
-    return "hi"
     return render_template('review.html')
 
 
